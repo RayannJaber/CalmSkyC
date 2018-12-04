@@ -6,7 +6,7 @@
 #endif
 
 #ifndef BAUD
-#define BAUD 57600UL
+#define BAUD 57600
 #endif
 #include <util/setbaud.h>
 
@@ -23,7 +23,7 @@ void uart_init(void) {
 #endif
 
     UCSR0C = _BV(UCSZ01) | _BV(UCSZ00); /* 8-bit data */ 
-    UCSR0B = _BV(RXEN0) | _BV(TXEN0);   /* Enable RX and TX */    
+    UCSR0B = (1 << RXEN0) | (1 << TXEN0);  /* Enable RX and TX */    
 }
 
 void uart_putchar(char c, FILE *stream) {
